@@ -7,9 +7,17 @@ id int not null auto_increment primary key,
 nombre varchar(50) not null,
 compania varchar(20),
 genero varchar(30),
-serie varchar(20),
-plataforma varchar(30),
-personajes text
+serie varchar(20)
+);
+
+create table if not exists personaje_juego(
+id_juego int not null,
+id_personaje int not null
+);
+
+create table if not exists plataforma_juego(
+id_juego int not null,
+id_plataforma int not null
 );
 
 create table if not exists personaje(
@@ -31,20 +39,27 @@ nombre varchar(20),
 fabricante varchar(20)
 );
 
-insert into juegos (nombre, compania, genero, serie, plataforma, personajes) values ('Super Smash Bros. Ultimate', 'Nintendo', 'peleas', 'Super Smash Bros.', 'Nintendo Switch', 'Cloud, Sephiroth, Mario, Bowser, Pac-Man, Marth, Fox McCloud, Pikachu, Yoshi');
-insert into juegos (nombre, compania, genero, serie, plataforma, personajes) values ('Final Fantasy VII', 'Square Enix', 'rpg', 'Final Fantasy', 'Playstattio 4, Playstation 5', 'Cloud, Sephiroth, Aerith, Tifa, Barret');
-insert into juegos (nombre, compania, genero, serie, plataforma, personajes) values ('Super Mario Bros.', 'Nintendo', 'plataformas 2-d', 'Super Mario Bros.', 'NES', 'Mario, Peach, Toad, Luigi');
-insert into juegos (nombre, compania, genero, serie, plataforma, personajes) values ('Grand Theft Auto San Andreas', 'Rockstar', 'mundo abierto, crimen', 'Grand Theft Auto','Playstation 2, Xbox, PC', 'Carl Jhonson, Big Smoke');
-insert into juegos (nombre, compania, genero, serie, plataforma, personajes) values ('Doom 2016', 'Bethesda', 'shooter', 'Doom', 'Xbox One, Playstation 4', 'DoomSlayer');
-insert into juegos (nombre, compania, genero, serie, plataforma, personajes) values ("New Yoshi's Island", 'Nintendo', 'plataformas 2-d', "Yoshi's Island", 'Nintendo 3DS', 'Yoshi, Baby Mario');
-insert into juegos (nombre, compania, genero, serie, plataforma, personajes) values ('Call of Duty Modern Warfare (2019)', 'Infinity Ward', 'shooter', 'Call of Duty', 'Xbox One, Playstation 4, PC', 'Cpt. Price');
-insert into juegos (nombre, compania, genero, serie, plataforma, personajes) values ('Pokemon Edicion Roja', 'Game Freak', 'rpg', 'Pokemon', 'Game Boy', 'Profesor Oak, Pikachu');
-insert into juegos (nombre, compania, genero, serie, plataforma, personajes) values ('Super Mario Bros. U', 'Nintendo', 'plataformas 2-d', 'Super Mario Bros', 'Wii U', 'Mario, Peach, Toad, Luigi');
-insert into juegos (nombre, compania, genero, serie, plataforma, personajes) values ('Resident Evil 4', 'Capcom', 'accion, horror', 'Resident evil', 'Playstation 2, GameCube', 'Leon S. Kennedy, Ada Wong, Ashley Graham');
+insert into juegos (nombre, compania, genero, serie) values ('Super Smash Bros. Ultimate', 'Nintendo', 'peleas', 'Super Smash Bros.');
+insert into juegos (nombre, compania, genero, serie) values ('Final Fantasy VII', 'Square Enix', 'rpg', 'Final Fantasy');
+insert into juegos (nombre, compania, genero, serie) values ('Super Mario Bros.', 'Nintendo', 'plataformas 2-d', 'Super Mario Bros.');
+insert into juegos (nombre, compania, genero, serie) values ('Grand Theft Auto San Andreas', 'Rockstar', 'crimen', 'Grand Theft Auto');
+insert into juegos (nombre, compania, genero, serie) values ('Doom 2016', 'Bethesda', 'shooter', 'Doom');
+insert into juegos (nombre, compania, genero, serie) values ("New Yoshi's Island", 'Nintendo', 'plataformas 2-d', "Yoshi's Island");
+insert into juegos (nombre, compania, genero, serie) values ('Call of Duty Modern Warfare (2019)', 'Infinity Ward', 'shooter', 'Call of Duty');
+insert into juegos (nombre, compania, genero, serie) values ('Pokemon Edicion Roja', 'Game Freak', 'rpg', 'Pokemon');
+insert into juegos (nombre, compania, genero, serie) values ('Super Mario Bros. U', 'Nintendo', 'plataformas 2-d', 'Super Mario Bros');
+insert into juegos (nombre, compania, genero, serie) values ('Resident Evil 4', 'Capcom', 'accion', 'Resident evil');
+
+insert into personaje_juego values (1,1), (1,2), (1,3), (1,4), (1,5), (1,6), (1,7), (1,8), (1,9), (2,1),
+(2,2), (2,10), (2,11), (2,12), (3,3), (3,4), (3,13), (3,14), (3,15), (4,16), (4,17), (5,18), (6,9), (6,19),
+(7,20), (8,8), (8,21), (9,3), (9,4), (9,13), (9,14), (9,15), (10,22), (10,23), (10,24);
+
+insert into plataforma_juego values (1,1), (2,2), (2,3), (3,4), (4,5), (4,6), (4,7), (5,2),
+(5,11), (6,12), (7,4), (7,7), (7,11), (8,8), (9,9), (10,5), (10,10);
 
 INSERT INTO personaje (nombre, alineacion) VALUES ('Cloud', 'bueno'), 
 ('Sephiroth', 'malo'), ('Mario', 'bueno'), ('Bowser', 'malo'), ('Pac-Man', 'bueno'),
-('Matrh', 'bueno'), ('Fox McCloud', 'bueno'), ('Pikachu', 'neutral'),
+('Marth', 'bueno'), ('Fox McCloud', 'bueno'), ('Pikachu', 'neutral'),
 ('Yoshi', 'bueno'), ('Aerith', 'bueno'), ('Tifa', 'bueno'), ('Barret', 'bueno'),
 ('Peach', 'bueno'), ('Toad', 'bueno'), ('Luigi', 'bueno'), ('Carl Jhonson', 'bueno'),
 ('Big Smoke', 'malo'), ('DoomSlayer', 'bueno'), ('Baby Mario', 'bueno'),
@@ -58,5 +73,4 @@ INSERT INTO compania (nombre, pais_origen, fundacion_anio) VALUES ('Nintendo', '
 INSERT INTO plataforma (nombre, fabricante) VALUES ('Nintendo Switch', 'Nintendo'),
 ('Playstation 4', 'Sony'), ('Playstation 5', 'Sony'), ('NES', 'Nintendo'),
 ('Playstation 2', 'Sony'), ('Xbox', 'Microsoft'), ('PC', 'Varios'), ('Game Boy', 'Nintendo'),
-('Wii U', 'Nintendo'), ('Gamecube', 'Nintendo');
-
+('Wii U', 'Nintendo'), ('Gamecube', 'Nintendo'), ('Xbox One', 'Microsoft'), ('Nintendo 3DS', 'Nintendo');
